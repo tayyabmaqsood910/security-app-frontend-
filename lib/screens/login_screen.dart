@@ -61,11 +61,11 @@ class _LoginScreenState extends State<LoginScreen> {
               children: [
                 const SizedBox(height: 40),
                 
-                // GUARDPRO Logo Style
+                // ZB SECURITY Logo Style
                 Row(
                   children: [
                     const Text(
-                      'GUARD',
+                      'ZB',
                       style: TextStyle(
                         color: Colors.white,
                         fontWeight: FontWeight.bold,
@@ -73,12 +73,12 @@ class _LoginScreenState extends State<LoginScreen> {
                         letterSpacing: 2,
                       ),
                     ),
-                    const SizedBox(width: 4),
+                    const SizedBox(width: 8),
                     Container(
-                      padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 2),
+                      padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 2),
                       color: AppColors.logoRed,
                       child: const Text(
-                        'PRO',
+                        'SECURITY',
                         style: TextStyle(
                           color: Colors.white,
                           fontWeight: FontWeight.bold,

@@ -154,10 +154,10 @@ class _DashboardScreenState extends State<DashboardScreen> {
                     letterSpacing: 2,
                   ),
                 ),
-                const SizedBox(width: 4),
+                const SizedBox(width: 6),
                 Container(
-                  padding: const EdgeInsets.symmetric(horizontal: 4, vertical: 2),
-                  color: AppColors.logoRed,
+                  padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 2),
+                  color: const Color(0xFFFF4500), // Accurate Orange color
                   child: const Text(
                     'PRO',
                     style: TextStyle(

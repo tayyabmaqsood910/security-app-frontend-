@@ -13,22 +13,26 @@ import 'theme/app_colors.dart';
 void main() {
   runApp(
     MultiProvider(
-      providers: [
-        ChangeNotifierProvider(create: (_) => AuthState()),
-      ],
-      child: const GuardProApp(),
+      providers: [ChangeNotifierProvider(create: (_) => AuthState())],
+      child: const ZBSecurityApp(),
     ),
   );
 }
 
-class GuardProApp extends StatelessWidget {
-  const GuardProApp({super.key});
+class ZBSecurityApp extends StatelessWidget {
+  const ZBSecurityApp({super.key});
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'GuardPro',
+      title: 'ZB Security',
+      builder: (context, child) {
+        if (child == null) {
+          return const SizedBox.shrink();
+        }
+        return _AppWithGlobalHeader(child: child);
+      },
       theme: ThemeData(
         fontFamily: 'Inter',
         brightness: Brightness.dark,
@@ -38,7 +42,10 @@ class GuardProApp extends StatelessWidget {
           elevation: 0,
         ),
         textTheme: const TextTheme(
-          displayLarge: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+          displayLarge: TextStyle(
+            color: Colors.white,
+            fontWeight: FontWeight.bold,
+          ),
           bodyLarge: TextStyle(color: Colors.white),
           bodyMedium: TextStyle(color: AppColors.textMuted),
         ),
@@ -54,8 +61,37 @@ class GuardProApp extends StatelessWidget {
         '/manager_dashboard': (context) => const ManagerDashboard(),
         // Placeholder routes for secondary features
         '/gps': (context) => _PlaceholderScreen(title: 'GPS SCAN'),
-        '/incident_report': (context) => _PlaceholderScreen(title: 'INCIDENT REPORT'),
+        '/incident_report': (context) =>
+            _PlaceholderScreen(title: 'INCIDENT REPORT'),
       },
+    );
+  }
+}
+
+class _AppWithGlobalHeader extends StatelessWidget {
+  final Widget child;
+  const _AppWithGlobalHeader({required this.child});
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        SafeArea(
+          bottom: false,
+          child: Container(
+            width: double.infinity,
+            height: 76,
+            color: AppColors.headerBackground,
+            alignment: Alignment.center,
+            child: Image.asset(
+              'assets/images/app_logo.png',
+              height: 56,
+              fit: BoxFit.contain,
+            ),
+          ),
+        ),
+        Expanded(child: child),
+      ],
     );
   }
 }
