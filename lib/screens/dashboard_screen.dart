@@ -341,6 +341,8 @@ class _DashboardScreenState extends State<DashboardScreen> {
                   _buildGridItem(
                     iconData: Icons.location_on,
                     label: 'GPS SCAN',
+                    isSpecial: true,
+                    specialType: 'gps_scan',
                     onTap: () => Navigator.pushNamed(context, '/gps'),
                   ),
                   _buildGridItem(
@@ -353,11 +355,13 @@ class _DashboardScreenState extends State<DashboardScreen> {
                   _buildGridItem(
                     iconData: Icons.report_problem,
                     label: 'INCIDENT REPORT',
+                    isSpecial: true,
+                    specialType: 'incident_report',
                     onTap: () => Navigator.pushNamed(context, '/incident_report'),
                   ),
                   _buildGridItem(
                     iconData: Icons.folder,
-                    label: 'POST ORDERS',
+                    label: 'POST & ESCALATION',
                     isSpecial: true,
                     specialType: 'folder',
                     onTap: () => Navigator.pushNamed(context, '/post_escalation'),
@@ -379,7 +383,8 @@ class _DashboardScreenState extends State<DashboardScreen> {
                   _buildGridItem(
                     iconData: Icons.phone_android,
                     label: 'EMERGENCY',
-                    iconColor: Colors.white,
+                    isSpecial: true,
+                    specialType: 'emergency',
                     onTap: () => Navigator.pushNamed(context, '/post_escalation'),
                   ),
                   _buildGridItem(
@@ -445,103 +450,85 @@ class _DashboardScreenState extends State<DashboardScreen> {
     Widget icon = Icon(iconData, color: iconColor, size: 55);
 
     if (isSpecial) {
-       if (specialType == 'flashlight') {
-        icon = Container(
-          width: 60,
-          height: 60,
-          decoration: BoxDecoration(
-            shape: BoxShape.circle,
-            color: isFlashlightOn ? Colors.yellow.shade700 : AppColors.headerBackground,
-            border: Border.all(
-              color: isFlashlightOn ? Colors.yellow.shade100 : Colors.grey.shade400, 
-              width: 2
-            ),
+      if (specialType == 'flashlight') {
+        icon = SizedBox(
+          width: 70,
+          height: 70,
+          child: Image.asset(
+            isFlashlightOn ? 'assets/images/flashlight_on.png' : 'assets/images/flashlight_off.png'
           ),
-          child: Center(
-            child: Text(
-              isFlashlightOn ? 'ON' : 'OFF',
-              style: const TextStyle(
-                color: Colors.white,
-                fontWeight: FontWeight.bold,
-                fontSize: 13,
-              ),
-            ),
-          ),
+        );
+      } else if (specialType == 'globe') {
+        icon = SizedBox(
+          width: 70,
+          height: 70,
+          child: Image.asset('assets/images/checkpoints.png'),
         );
       } else if (specialType == 'calendar') {
-        icon = Stack(
-          alignment: Alignment.center,
-          children: [
-            const Icon(Icons.calendar_today_rounded, color: Colors.white, size: 55),
-            Positioned(
-              top: 25,
-              child: Text(
-                '14',
-                style: TextStyle(
-                  color: Colors.blue.shade900,
-                  fontWeight: FontWeight.bold,
-                  fontSize: 16,
-                ),
-              ),
-            ),
-          ],
+        icon = SizedBox(
+          width: 70,
+          height: 70,
+          child: Image.asset('assets/images/calendar.png'),
         );
       } else if (specialType == 'clock') {
-        icon = Stack(
-          alignment: Alignment.center,
-          children: [
-            const Icon(Icons.timer_outlined, color: Colors.white, size: 55),
-            Positioned(
-              top: 5,
-              right: 5,
-              child: Container(
-                width: 12,
-                height: 12,
-                decoration: const BoxDecoration(
-                  color: AppColors.accentDot,
-                  shape: BoxShape.circle,
-                ),
-              ),
-            ),
-          ],
+        icon = SizedBox(
+          width: 70,
+          height: 70,
+          child: Image.asset('assets/images/time_clock.png'),
+        );
+      } else if (specialType == 'gps_scan') {
+        icon = SizedBox(
+          width: 70,
+          height: 70,
+          child: Image.asset('assets/images/gps_scan.png'),
+        );
+      } else if (specialType == 'incident_report') {
+        icon = SizedBox(
+          width: 70,
+          height: 70,
+          child: Image.asset('assets/images/incident_report.png'),
+        );
+      } else if (specialType == 'report') {
+        icon = SizedBox(
+          width: 70,
+          height: 70,
+          child: Image.asset('assets/images/reports.png'),
         );
       } else if (specialType == 'camera') {
-        icon = Stack(
-          alignment: Alignment.center,
-          children: [
-            const Icon(Icons.camera_alt, color: Colors.white, size: 55),
-            Positioned(
-              top: 5,
-              right: 5,
-              child: Container(
-                width: 12,
-                height: 12,
-                decoration: BoxDecoration(
-                  color: isWatchModeOn ? Colors.green : AppColors.accentDot,
-                  shape: BoxShape.circle,
-                ),
-              ),
-            ),
-          ],
+        icon = SizedBox(
+          width: 70,
+          height: 70,
+          child: Image.asset('assets/images/watch_mode.png'),
         );
       } else if (specialType == 'mail') {
-        icon = Stack(
-          alignment: Alignment.center,
-          children: [
-            const Icon(Icons.mail_outline, color: Colors.white, size: 55),
-            Positioned(
-              top: 5,
-              right: 5,
-              child: Container(
-                width: 12,
-                height: 12,
-                decoration: const BoxDecoration(
-                  color: Colors.blue,
-                  shape: BoxShape.circle,
-                ),
-              ),
-            ),
-          ],
+        icon = SizedBox(
+          width: 70,
+          height: 70,
+          child: Image.asset('assets/images/messages.png'),
+        );
+      } else if (specialType == 'dispatch') {
+        icon = SizedBox(
+          width: 70,
+          height: 70,
+          child: Image.asset('assets/images/dispatch.png'),
+        );
+      } else if (specialType == 'folder') {
+        icon = SizedBox(
+          width: 70,
+          height: 70,
+          child: Image.asset('assets/images/post_escalation.png'),
+        );
+      } else if (specialType == 'emergency') {
+        icon = SizedBox(
+          width: 70,
+          height: 70,
+          child: Image.asset('assets/images/emergency.png'),
+        );
+      } else if (specialType == 'settings') {
+        icon = SizedBox(
+          width: 70,
+          height: 70,
+          child: Image.asset('assets/images/settings.png'),
         );
       }
     }
@@ -550,8 +537,9 @@ class _DashboardScreenState extends State<DashboardScreen> {
       onTap: onTap,
       child: Container(
         decoration: BoxDecoration(
-          color: AppColors.gridItemBackground,
-          borderRadius: BorderRadius.circular(10),
+          color: const Color(0xFF354151), // Accurate TrackTik tile grey
+          borderRadius: BorderRadius.circular(6),
+          border: Border.all(color: Colors.white.withOpacity(0.1), width: 0.5),
         ),
         padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 12),
         child: Column(
@@ -566,9 +554,9 @@ class _DashboardScreenState extends State<DashboardScreen> {
               overflow: TextOverflow.ellipsis,
               style: const TextStyle(
                 color: Colors.white,
-                fontSize: 11,
+                fontSize: 10,
                 fontWeight: FontWeight.bold,
-                letterSpacing: 1.2,
+                letterSpacing: 1.0,
               ),
             ),
           ],

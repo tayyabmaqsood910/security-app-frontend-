@@ -1,0 +1,25 @@
+Running Gradle task 'assembleDebug'...                          
+e: file:///C:/Users/Qadeer/Desktop/frontend/android/build.gradle.kts:37:17: Unresolved reference: jvmTarget
+
+FAILURE: Build failed with an exception.
+
+* Where:
+Build file 'C:\Users\Qadeer\Desktop\frontend\android\build.gradle.kts' line: 37
+
+* What went wrong:
+Script compilation error:
+
+  Line 37:                 jvmTarget = "17"
+                           ^ Unresolved reference: jvmTarget
+
+1 error
+
+* Try:
+> Run with --stacktrace option to get the stack trace.
+> Run with --info or --debug option to get more log output.
+> Run with --scan to get full insights.
+> Get more help at https://help.gradle.org.
+
+BUILD FAILED in 6s
+Running Gradle task 'assembleDebug'...                              7.3s
+Gradle task assembleDebug failed with exit code 1

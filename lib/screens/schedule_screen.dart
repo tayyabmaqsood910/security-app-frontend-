@@ -27,26 +27,31 @@ class _ScheduleScreenState extends State<ScheduleScreen> {
   String _getMonthRange() {
     final firstDay = DateTime(_currentMonth.year, _currentMonth.month, 1);
     final lastDay = DateTime(_currentMonth.year, _currentMonth.month + 1, 0);
-    
+
     final DateFormat formatter = DateFormat('MMM d');
-    String range = '${formatter.format(firstDay)}st – ${formatter.format(lastDay)}';
-    
+    String range =
+        '${formatter.format(firstDay)}st – ${formatter.format(lastDay)}';
+
     // Add ordinal suffix logic for a more authentic look
     String startDay = DateFormat('d').format(firstDay);
     String endDay = DateFormat('d').format(lastDay);
-    
+
     String getSuffix(int day) {
       if (day >= 11 && day <= 13) return 'th';
       switch (day % 10) {
-        case 1: return 'st';
-        case 2: return 'nd';
-        case 3: return 'rd';
-        default: return 'th';
+        case 1:
+          return 'st';
+        case 2:
+          return 'nd';
+        case 3:
+          return 'rd';
+        default:
+          return 'th';
       }
     }
 
-    return '${DateFormat('MMM').format(firstDay)} ${startDay}${getSuffix(int.parse(startDay))} – '
-           '${DateFormat('MMM').format(lastDay)} ${endDay}${getSuffix(int.parse(endDay))}';
+    return '${DateFormat('MMM').format(firstDay)} $startDay${getSuffix(int.parse(startDay))} – '
+        '${DateFormat('MMM').format(lastDay)} $endDay${getSuffix(int.parse(endDay))}';
   }
 
   @override
@@ -96,7 +101,11 @@ class _ScheduleScreenState extends State<ScheduleScreen> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 IconButton(
-                  icon: const Icon(Icons.arrow_back_ios, color: Colors.white, size: 24),
+                  icon: const Icon(
+                    Icons.arrow_back_ios,
+                    color: Colors.white,
+                    size: 24,
+                  ),
                   onPressed: _previousMonth,
                 ),
                 Column(
@@ -120,13 +129,17 @@ class _ScheduleScreenState extends State<ScheduleScreen> {
                   ],
                 ),
                 IconButton(
-                  icon: const Icon(Icons.arrow_forward_ios, color: Colors.white, size: 24),
+                  icon: const Icon(
+                    Icons.arrow_forward_ios,
+                    color: Colors.white,
+                    size: 24,
+                  ),
                   onPressed: _nextMonth,
                 ),
               ],
             ),
           ),
-          
+
           // Schedule List (Mocking data for the selected month)
           Expanded(
             child: _currentMonth.month == 12 && _currentMonth.year == 2025

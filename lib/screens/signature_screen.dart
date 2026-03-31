@@ -25,14 +25,16 @@ class SignatureScreen extends StatelessWidget {
                     ),
                   ),
                   const Spacer(),
-                  Container(
+                  SizedBox(
                     width: 100,
                     height: 45,
                     child: ElevatedButton(
                       onPressed: () {},
                       style: ElevatedButton.styleFrom(
                         backgroundColor: Colors.orange,
-                        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(2)),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(2),
+                        ),
                         elevation: 0,
                       ),
                       child: const Text(
@@ -78,7 +80,7 @@ class SignatureScreen extends StatelessWidget {
                 ],
               ),
             ),
-            
+
             // Signature Canvas
             Expanded(
               child: Container(
@@ -90,12 +92,13 @@ class SignatureScreen extends StatelessWidget {
                 child: Center(
                   child: Image.asset(
                     'assets/images/signature_placeholder.png', // Or just empty space
-                    errorBuilder: (context, error, stackTrace) => const SizedBox(),
+                    errorBuilder: (context, error, stackTrace) =>
+                        const SizedBox(),
                   ),
                 ),
               ),
             ),
-            
+
             // Bottom Controls
             Container(
               height: 70,
@@ -103,9 +106,21 @@ class SignatureScreen extends StatelessWidget {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
-                   Icon(Icons.menu, color: Colors.white.withAlpha(150), size: 30),
-                   Icon(Icons.crop_square_rounded, color: Colors.white.withAlpha(150), size: 30),
-                   Icon(Icons.arrow_back_ios_new_rounded, color: Colors.white.withAlpha(150), size: 25),
+                  Icon(
+                    Icons.menu,
+                    color: Colors.white.withAlpha(150),
+                    size: 30,
+                  ),
+                  Icon(
+                    Icons.crop_square_rounded,
+                    color: Colors.white.withAlpha(150),
+                    size: 30,
+                  ),
+                  Icon(
+                    Icons.arrow_back_ios_new_rounded,
+                    color: Colors.white.withAlpha(150),
+                    size: 25,
+                  ),
                 ],
               ),
             ),

@@ -1,0 +1,19 @@
+Running Gradle task 'assembleDebug'...                          
+
+FAILURE: Build failed with an exception.
+
+* Where:
+Build file 'C:\Users\Qadeer\Desktop\frontend\android\build.gradle.kts' line: 27
+
+* What went wrong:
+Cannot run Project.afterEvaluate(Action) when the project is already evaluated.
+
+* Try:
+> Run with --stacktrace option to get the stack trace.
+> Run with --info or --debug option to get more log output.
+> Run with --scan to get full insights.
+> Get more help at https://help.gradle.org.
+
+BUILD FAILED in 5s
+Running Gradle task 'assembleDebug'...                              5.5s
+Gradle task assembleDebug failed with exit code 1
